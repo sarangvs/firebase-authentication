@@ -1,6 +1,7 @@
 import 'package:assignment/controller/view_controllers/home_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
@@ -21,11 +22,36 @@ class HomeView extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () {
-              controller.signOut();
+              Get.defaultDialog(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                title: "Alert!",
+                content: const Text("Are you sure, do you want to logout?"),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: const Text("No"),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      controller.signOut();
+                    },
+                    child: const Text("Yes"),
+                  ),
+                ],
+              );
             },
             child: const Text("Logout"),
           ),
         ],
+      ),
+      body: Center(
+        child: Text(
+          "Welcome To Home Screen",
+          style: GoogleFonts.poppins(fontSize: 22),
+        ),
       ),
     );
   }

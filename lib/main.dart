@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //initializing Firebase
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
@@ -15,13 +16,11 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      scaffoldMessengerKey: Utils.snackbarKey,
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: themeData,
-      home: const LaunchView(),
-    );
-  }
+  Widget build(BuildContext context) => GetMaterialApp(
+        scaffoldMessengerKey: Utils.snackbarKey,
+        debugShowCheckedModeBanner: false,
+        title: 'Assignment',
+        theme: themeData,
+        home: const LaunchView(),
+      );
 }
