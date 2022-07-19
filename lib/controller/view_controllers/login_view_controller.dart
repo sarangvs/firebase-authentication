@@ -1,9 +1,8 @@
-import 'package:assignment/controller/authentification_controller.dart';
+import 'package:assignment/services/authentication.dart';
 import 'package:assignment/utils/utils.dart';
 import 'package:get/get.dart';
 
 class LoginViewController extends GetxController {
-  final authentificationController = Get.put(AuthentificationController());
 
   bool _isLoading = false;
 
@@ -18,7 +17,8 @@ class LoginViewController extends GetxController {
   Future<void> loginUser(
       {required String email, required String password}) async {
     isLoading = true;
-    await authentificationController.loginUser(
+ // passing user details for authentication 
+    await AuthenticationServices.loginUser(
       email: email,
       password: password,
     );
@@ -27,7 +27,7 @@ class LoginViewController extends GetxController {
 
 //Login using google signin
   Future<void> signInwithgoogle() async {
-    await authentificationController.signInWithGoogle();
+    await AuthenticationServices.signInWithGoogle();
   }
 
 // validate fields in login view

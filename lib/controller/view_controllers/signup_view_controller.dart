@@ -1,12 +1,10 @@
-import 'package:assignment/controller/authentification_controller.dart';
+import 'package:assignment/services/authentication.dart';
 import 'package:assignment/utils/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class SignupViewController extends GetxController {
-  //Intializing Authentication Controller
-  final authenticationController = Get.put(AuthentificationController());
 
   bool _isLoading = false;
 
@@ -21,7 +19,8 @@ class SignupViewController extends GetxController {
   Future<void> createNewUser(
       {required String email, required String password}) async {
     isLoading = true;
-    await authenticationController.registerNewUser(
+    // passing user details for registering new user
+    await AuthenticationServices.registerNewUser(
       email: email,
       password: password,
     );
@@ -43,6 +42,7 @@ class SignupViewController extends GetxController {
       "email": email,
       "createdAt": DateTime.now().toIso8601String(),
     };
+    // passing user details as json to db 
     await user.add(userMap);
   }
 

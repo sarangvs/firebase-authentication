@@ -65,41 +65,43 @@ class LoginView extends StatelessWidget {
                   ),
                   const HeightWhiteSpace(3),
                   GetBuilder<LoginViewController>(
-                      builder: (controller) => Align(
-                            alignment: Alignment.center,
-                            child: CustomElevation(
-                              height: 41,
-                              child: ElevatedButton(
-                                onPressed: () async {
-                                  final isValid = await controller.validate(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  );
-                                  if (isValid) {
-                                    controller.loginUser(
-                                      email: emailController.text,
-                                      password: passwordController.text,
-                                    );
-                                  }
-                                },
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      AppTheme.buttonColor),
-                                ),
-                                child: controller.isLoading
-                                    ? Padding(
-                                        padding: const EdgeInsets.all(4),
-                                        child: _loadingWidget(),
-                                      )
-                                    : Text(
-                                        'Log In',
-                                        style: GoogleFonts.poppins(
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                              ),
+                    builder: (controller) => Align(
+                      alignment: Alignment.center,
+                      child: CustomElevation(
+                        height: 41,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            final isValid = await controller.validate(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                            if (isValid) {
+                              controller.loginUser(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                            }
+                          },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              AppTheme.buttonColor,
                             ),
-                          )),
+                          ),
+                          child: controller.isLoading
+                              ? Padding(
+                                  padding: const EdgeInsets.all(4),
+                                  child: _loadingWidget(),
+                                )
+                              : Text(
+                                  'Log In',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                        ),
+                      ),
+                    ),
+                  ),
                   const HeightWhiteSpace(5),
                   Align(
                     alignment: Alignment.center,
@@ -137,7 +139,6 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                       const WidthWhiteSpace(4),
-                     
                     ],
                   )
                 ],
@@ -157,10 +158,11 @@ class LoginView extends StatelessWidget {
       );
 
 // Custom TextField Widget
-  TextField _textField(
-          {required String hintText,
-          required TextEditingController controller,
-          bool? obsecuretext}) =>
+  TextField _textField({
+    required String hintText,
+    required TextEditingController controller,
+    bool? obsecuretext,
+  }) =>
       TextField(
         obscureText: obsecuretext ?? false,
         controller: controller,
