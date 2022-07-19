@@ -3,7 +3,7 @@ import 'package:assignment/utils/utils.dart';
 import 'package:get/get.dart';
 
 class LoginViewController extends GetxController {
-  final authentificationController = Get.find<AuthentificationController>();
+  final authentificationController = Get.put(AuthentificationController());
 
   bool _isLoading = false;
 
@@ -28,6 +28,11 @@ class LoginViewController extends GetxController {
 //Login using google signin
   Future<void> signInwithgoogle() async {
     await authentificationController.signInWithGoogle();
+  }
+
+// Login using Facebook
+  Future<void> loginWithFacebook() async {
+    await authentificationController.signInWithFacebook();
   }
 
 // validate fields in login view

@@ -1,4 +1,5 @@
 import 'package:assignment/controller/view_controllers/home_view_controller.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,7 +50,7 @@ class HomeView extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          "Welcome To Home Screen",
+          "Welcome ${FirebaseAuth.instance.currentUser!.displayName ?? ""}",
           style: GoogleFonts.poppins(fontSize: 22),
         ),
       ),

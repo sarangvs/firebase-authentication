@@ -1,6 +1,5 @@
 import 'package:assignment/controller/view_controllers/login_view_controller.dart';
 import 'package:assignment/themes/theme.dart';
-import 'package:assignment/views/home_view/home_view.dart';
 import 'package:assignment/widgets/custom_elevation.dart';
 import 'package:assignment/widgets/white_space_widget.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +23,7 @@ class LoginView extends StatelessWidget {
               Icons.arrow_back,
               color: Colors.black,
             ),
-            onPressed: () {
-              Get.back();
-            },
+            onPressed: () => Get.back(),
           ),
           elevation: 0,
           backgroundColor: Colors.transparent,
@@ -67,43 +64,42 @@ class LoginView extends StatelessWidget {
                     obsecuretext: true,
                   ),
                   const HeightWhiteSpace(3),
-                  GetBuilder<LoginViewController>(builder: (controller) {
-                    return Align(
-                      alignment: Alignment.center,
-                      child: CustomElevation(
-                        height: 41,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            final isValid = await controller.validate(
-                              email: emailController.text,
-                              password: passwordController.text,
-                            );
-                            if (isValid) {
-                              controller.loginUser(
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                            }
-                          },
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(AppTheme.buttonColor),
-                          ),
-                          child: controller.isLoading
-                              ? Padding(
-                                  padding: const EdgeInsets.all(4),
-                                  child: _loadingWidget(),
-                                )
-                              : Text(
-                                  'Log In',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 16,
-                                  ),
+                  GetBuilder<LoginViewController>(
+                      builder: (controller) => Align(
+                            alignment: Alignment.center,
+                            child: CustomElevation(
+                              height: 41,
+                              child: ElevatedButton(
+                                onPressed: () async {
+                                  final isValid = await controller.validate(
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  );
+                                  if (isValid) {
+                                    controller.loginUser(
+                                      email: emailController.text,
+                                      password: passwordController.text,
+                                    );
+                                  }
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      AppTheme.buttonColor),
                                 ),
-                        ),
-                      ),
-                    );
-                  }),
+                                child: controller.isLoading
+                                    ? Padding(
+                                        padding: const EdgeInsets.all(4),
+                                        child: _loadingWidget(),
+                                      )
+                                    : Text(
+                                        'Log In',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                              ),
+                            ),
+                          )),
                   const HeightWhiteSpace(5),
                   Align(
                     alignment: Alignment.center,
@@ -121,10 +117,8 @@ class LoginView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
-                        onTap: () {
-                          controller.signInwithgoogle().then((value) {
-                            Get.offAll(HomeView());
-                          });
+                        onTap: () async {
+                          await controller.signInwithgoogle();
                         },
                         child: Container(
                           height: 50,
@@ -143,21 +137,27 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                       const WidthWhiteSpace(4),
-                      Container(
-                        height: 50,
-                        width: 50,
-                        decoration: const BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(blurRadius: 3, color: Colors.grey)
-                          ],
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Center(
-                          child:
-                              SvgPicture.asset("assets/svg/facebook-logo.svg"),
-                        ),
-                      )
+                      // InkWell(
+                      //   onTap: () {
+                      //     controller.loginWithFacebook();
+                      //   },
+                      //   child: Container(
+                      //     height: 50,
+                      //     width: 50,
+                      //     decoration: const BoxDecoration(
+                      //       boxShadow: [
+                      //         BoxShadow(blurRadius: 3, color: Colors.grey)
+                      //       ],
+                      //       color: Colors.white,
+                      //       shape: BoxShape.circle,
+                      //     ),
+                      //     child: Center(
+                      //       child: SvgPicture.asset(
+                      //         "assets/svg/facebook-logo.svg",
+                      //       ),
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   )
                 ],
