@@ -1,5 +1,7 @@
 import 'package:assignment/controller/authentification_controller.dart';
 import 'package:assignment/utils/utils.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class SignupViewController extends GetxController {
@@ -24,6 +26,24 @@ class SignupViewController extends GetxController {
       password: password,
     );
     isLoading = false;
+  }
+
+  // Save user details to db
+  Future<void> saveUserdetails({
+    required String name,
+    required String phone,
+    required String email,
+  }) async {
+    final user = FirebaseFirestore.instance.collection('users');
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    final userMap = {
+      "id": uid,
+      "name": name,
+      "phone": phone,
+      "email": email,
+      "createdAt": DateTime.now().toIso8601String(),
+    };
+    await user.add(userMap);
   }
 
   // Validate field in sign up view

@@ -93,9 +93,14 @@ class SignupView extends StatelessWidget {
                               password: passwordController.text,
                             );
                             if (isValid) {
-                              controller.createNewUser(
+                              await controller.createNewUser(
                                 email: emailController.text,
                                 password: passwordController.text,
+                              );
+                              await controller.saveUserdetails(
+                                name: fullNameController.text,
+                                phone: phoneController.text,
+                                email: emailController.text,
                               );
                             }
                           },

@@ -137,27 +137,7 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                       const WidthWhiteSpace(4),
-                      // InkWell(
-                      //   onTap: () {
-                      //     controller.loginWithFacebook();
-                      //   },
-                      //   child: Container(
-                      //     height: 50,
-                      //     width: 50,
-                      //     decoration: const BoxDecoration(
-                      //       boxShadow: [
-                      //         BoxShadow(blurRadius: 3, color: Colors.grey)
-                      //       ],
-                      //       color: Colors.white,
-                      //       shape: BoxShape.circle,
-                      //     ),
-                      //     child: Center(
-                      //       child: SvgPicture.asset(
-                      //         "assets/svg/facebook-logo.svg",
-                      //       ),
-                      //     ),
-                      //   ),
-                      // )
+                     
                     ],
                   )
                 ],

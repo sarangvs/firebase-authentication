@@ -30,11 +30,6 @@ class LoginViewController extends GetxController {
     await authentificationController.signInWithGoogle();
   }
 
-// Login using Facebook
-  Future<void> loginWithFacebook() async {
-    await authentificationController.signInWithFacebook();
-  }
-
 // validate fields in login view
   Future<bool> validate({
     required String email,
