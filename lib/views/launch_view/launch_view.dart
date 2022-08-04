@@ -42,7 +42,7 @@ class LaunchView extends StatelessWidget {
                       onPressed: () => Get.to(SignupView()),
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(AppTheme.buttonColor),
+                            MaterialStateProperty.all(AppTheme.primaryColor),
                       ),
                       child: Text(
                         'Get Started',

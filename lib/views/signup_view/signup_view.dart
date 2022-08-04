@@ -106,7 +106,7 @@ class SignupView extends StatelessWidget {
                           },
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                              AppTheme.buttonColor,
+                              AppTheme.primaryColor,
                             ),
                           ),
                           child: controller.isLoading
@@ -140,7 +140,7 @@ class SignupView extends StatelessWidget {
                         Text(
                           "Sign In",
                           style: GoogleFonts.poppins(
-                            color: AppTheme.buttonColor,
+                            color: AppTheme.primaryColor,
                           ),
                         ),
                       ],
@@ -158,8 +158,8 @@ class SignupView extends StatelessWidget {
         indicatorType: Indicator.circleStrokeSpin,
         colors: [Colors.white],
         strokeWidth: 2,
-        backgroundColor: AppTheme.buttonColor,
-        pathBackgroundColor: AppTheme.buttonColor,
+        backgroundColor: AppTheme.primaryColor,
+        pathBackgroundColor: AppTheme.primaryColor,
       );
 
 // Custom TextField Widget

@@ -9,7 +9,7 @@ class Utils {
     final snackBar = SnackBar(
       content:
           Text(text, style: GoogleFonts.poppins(fontWeight: FontWeight.w400)),
-      backgroundColor: AppTheme.primaryColor,
+      backgroundColor: AppTheme.redColor,
       duration: const Duration(seconds: 3),
       // shape: const StadiumBorder(),
       margin: const EdgeInsets.symmetric(horizontal: 20),
